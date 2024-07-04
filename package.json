@@ -2,7 +2,10 @@
   "name": ".",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": " node dist/index.js",
+    "studio": "drizzle-kit studio",
+    "push": "drizzle-kit push"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.0",
