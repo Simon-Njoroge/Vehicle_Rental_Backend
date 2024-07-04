@@ -1,0 +1,300 @@
+GET http://locaLhost:8000
+
+###
+GET http://locaLhost:8000/api/vehicleall
+
+//vehicles
+###
+GET http://locaLhost:8000/api/vehicle/1
+
+###
+POST http://locaLhost:8000/api/vehicleadd
+Content-Type: application/json
+
+
+{
+  "VehicleSpec_id": 3,
+  "vehicles_id": 2,
+  "rental_rate": "212",
+  "created_at": "12",
+  "updated_at": "2112"
+}
+
+
+###
+PUT http://locaLhost:8000/api/updatevehicle/1
+Content-Type: application/json
+
+
+{
+  "VehicleSpec_id": 2,
+  "vehicles_id": 2,
+  "rental_rate": "215",
+  "created_at": "12",
+  "updated_at": "2112"
+}
+
+//vehiclesspec
+###
+GET http://locaLhost:8000/api/vehiclespecall
+
+###
+GET http://locaLhost:8000/api/vehiclespec/1
+
+###
+POST  http://locaLhost:8000/api/vehiclespecadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatevehiclespec/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletevehiclespec/1
+
+
+//users
+###
+GET http://locaLhost:8000/api/usersall
+
+###
+GET http://locaLhost:8000/api/users/1
+
+###
+POST  http://locaLhost:8000/api/usersadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updateusers/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deleteusers/1
+
+
+//payments
+###
+GET http://locaLhost:8000/api/paymentall
+
+###
+GET http://locaLhost:8000/api/payment/1
+
+###
+POST  http://locaLhost:8000/api/paymentadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatepayment/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletepayment/1
+
+
+
+
+//navbar
+###
+GET http://locaLhost:8000/api/paymentall
+
+###
+GET http://locaLhost:8000/api/navbar/1
+
+###
+POST  http://locaLhost:8000/api/navbaradd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatenavbar/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletenavbar/1
+
+
+
+
+//location/branches
+###
+GET http://locaLhost:8000/api/locationall
+
+###
+GET http://locaLhost:8000/api/location/1
+
+###
+POST  http://locaLhost:8000/api/locationadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatelocation/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletenavbar/1
+
+
+
+//homedata
+###
+GET http://locaLhost:8000/api/homeall
+
+###
+GET http://locaLhost:8000/api/home/1
+
+###
+POST  http://locaLhost:8000/api/homeadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatehome/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletehome/1
+
+
+
+//fleet_management
+###
+GET http://locaLhost:8000/api/fleetall
+
+###
+GET http://locaLhost:8000/api/fleet/1
+
+###
+POST  http://locaLhost:8000/api/fleetadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatefleet/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletefleet/1
+
+
+
+//faqs_table
+###
+GET http://locaLhost:8000/api/faqsall
+
+###
+GET http://locaLhost:8000/api/faqs/1
+
+###
+POST  http://locaLhost:8000/api/homeadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatefaq/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletefaq/1
+
+
+//customer_support
+###
+GET http://locaLhost:8000/api/suppll
+
+###
+GET http://locaLhost:8000/api/supp/1
+
+###
+POST  http://locaLhost:8000/api/suppadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatesupp/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletesupp/1
+
+
+//contact_table
+###
+GET http://locaLhost:8000/api/contall
+
+###
+GET http://locaLhost:8000/api/cont/1
+
+###
+POST  http://locaLhost:8000/api/contadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatecont/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletecont/1
+
+
+
+//booking_table
+###
+GET http://locaLhost:8000/api/bookall
+
+###
+GET http://locaLhost:8000/api/book/1
+
+###
+POST  http://locaLhost:8000/api/bookadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updatebook/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deletebook/1
+
+
+
+//about_table
+###
+GET http://locaLhost:8000/api/aboutall
+
+###
+GET http://locaLhost:8000/api/about/1
+
+###
+POST  http://locaLhost:8000/api/aboutadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updateabout/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deleteabout/1
+
+
+
+//register
+###
+POST http://locaLhost:8000/api/auth/register
+Content-Type: application/javascript
+
+{
+  "auth_id":1,
+  "users_id":1,
+  "password":"simon",
+  "authname":"simon",
+  "createdd_at":"2024",
+  "updated_at":"2025",
+  "role":"user"
+}
+
+//login
+###
+POST  http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+   "ownername": "simon",
+   "password": "simon"
+}
+
+
