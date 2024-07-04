@@ -1,23 +1,30 @@
 {
-  "name": ".",
+  "name": "vehicle_rental",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
     "build": "tsc",
+    "dev": "tsx watch src/index.ts",
     "start": " node dist/index.js",
     "studio": "drizzle-kit studio",
     "push": "drizzle-kit push"
   },
   "dependencies": {
-    "@hono/node-server": "^1.12.0",
-    "@neondatabase/serverless": "^0.9.4",
-    "drizzle-kit": "^0.22.8",
+    ".env": "link:.env",
+    "@hono/node-server": "^1.11.4",
+    "@hono/zod-validator": "^0.2.2",
+    "@neondatabase/serverless": "^0.9.3",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.22.7",
     "drizzle-orm": "^0.31.2",
-    "hono": "^4.4.11",
-    "typescript": "^5.5.3",
+    "hono": "^4.4.8",
+    "neon": "^2.0.0",
+    "pg": "^8.12.0",
+    "serverless": "^4.1.6",
+    "typescript": "^5.5.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17",
-    "tsx": "^4.16.2"
+    "@types/node": "^20.14.9",
+    "drizzle-kit": "^0.22.6",
+    "tsx": "^4.15.7"
   }
 }
