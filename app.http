@@ -95,7 +95,7 @@ DELETE http://locaLhost:8000/api/deletepayment/1
 
 //navbar
 ###
-GET http://locaLhost:8000/api/paymentall
+GET http://locaLhost:8000/api/navbarall
 
 ###
 GET http://locaLhost:8000/api/navbar/1
