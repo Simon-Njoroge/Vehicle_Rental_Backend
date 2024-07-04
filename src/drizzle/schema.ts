@@ -152,7 +152,7 @@ export const bokking_location_relations= relations(booking_table, ({ one, many }
 
 //pages data tables
 
-export const Homedata=pgTable("Homedata",{
+export const Homedata2=pgTable("alldata",{
     id:serial("id"),
     logo: varchar("Logo"),
     Hpic: varchar("Hpic"),
@@ -161,13 +161,19 @@ export const Homedata=pgTable("Homedata",{
     wheelpicedesc:varchar("2wheeldesc"),
     wheelpic4:varchar("4wheelpic"),
     wheelpicedesc4:varchar("4wheeldesc")
+   
 })
 
 export const navbar_table=pgTable("navbar_table",{
     id:serial("id").primaryKey(),
-    navbar:varchar("navbar"),
+    Home:varchar("Home"),
+    About:varchar("About"),
+    faqs:varchar("faqs"),
+    contats:varchar("contacts"),
+    regester:varchar("regester"),
+    signin:varchar("signin")
 })
-export const about_leadership_table=pgTable("Homedata",{
+export const about_leadership_table=pgTable("homodata",{
     id: serial("id").primaryKey(),
     Name:varchar("name"),
     pic:varchar("picture"),
@@ -235,8 +241,8 @@ export type TSBsta = typeof booking_table.$inferSelect
 export type TILbt = typeof Location_and_Branches_table.$inferInsert
 export type TSLbt = typeof Location_and_Branches_table.$inferSelect
 
-export type TIhome =typeof Homedata.$inferInsert
-export type TShome =typeof Homedata.$inferInsert
+export type TIhome =typeof Homedata2.$inferInsert
+export type TShome =typeof Homedata2.$inferInsert
 
 export type TIabout =typeof about_leadership_table.$inferInsert
 export type TSabout =typeof about_leadership_table.$inferInsert
