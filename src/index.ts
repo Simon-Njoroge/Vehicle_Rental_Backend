@@ -13,6 +13,7 @@ import{customerrouters} from "./customer_support_table/customerrouter"
 import{contactrouters} from "./contact_table/contactrouter"
 import{bookingrouters} from './booking_table/bookingrouter'
 import {aboutrouters} from "./about_table/aboutrouter"
+import {assetsrouters} from "./assets/assets.router"
 import { cors } from 'hono/cors'
 // import {authRouter} from './auth/auth.route'
 const app = new Hono()
@@ -34,6 +35,7 @@ app.route("/api",customerrouters)
 app.route('/api',contactrouters)
 app.route('/api',bookingrouters)
 app.route("/api",aboutrouters)
+app.route("/api",assetsrouters)
 // app.route("api/auth",authRouter)
 const port = 8000
 console.log(`Server is running on port ${port}`)

@@ -192,6 +192,11 @@ export const contact_table=pgTable("contact_table",{
     details:varchar("details"),
 })
 
+export const assests_table=pgTable("assets",{
+    assets_id:serial("assets_id").primaryKey(),
+    name:varchar("name"),
+    Item:varchar("item")
+})
 //authenticationtable
 export const RoleEnum=pgEnum("role",["admin","user"])
 export const VehicleRentalauth=pgTable("auths",{

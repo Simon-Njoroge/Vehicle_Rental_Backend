@@ -271,6 +271,25 @@ Content-Type: application/json
 DELETE http://locaLhost:8000/api/deleteabout/1
 
 
+//assets_table
+###
+GET http://locaLhost:8000/api/assetsall
+
+###
+GET http://locaLhost:8000/api/asset/1
+
+###
+POST  http://locaLhost:8000/api/assetadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updateassets/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deleteassets/1
+
+
 
 //register
 ###
