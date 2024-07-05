@@ -13,7 +13,7 @@ import{customerrouters} from "./customer_support_table/customerrouter"
 import{contactrouters} from "./contact_table/contactrouter"
 import{bookingrouters} from './booking_table/bookingrouter'
 import {aboutrouters} from "./about_table/aboutrouter"
-import {assetsrouters} from "./assets/assets.router"
+import {assetsrouters} from "./assets_table/assetsrouter"
 import { cors } from 'hono/cors'
 // import {authRouter} from './auth/auth.route'
 const app = new Hono()

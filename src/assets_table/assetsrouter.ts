@@ -1,4 +1,4 @@
-import{assetsservices,getassets,createassetss,updateassetss,deleteassetss} from './assets.controller'
+import{assetsservices,getassets,createassetss,updateassetss,deleteassetss} from './assetscontroller'
 import {Hono} from 'hono'
 
 

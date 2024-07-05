@@ -1,4 +1,4 @@
-import {assetsservice,getaboutassets,createassets,updateassets,deleteassets} from './assets.service'
+import {assetsservice,getaboutassets,createassets,updateassets,deleteassets} from './assetsservice'
 import {getallController,createallController,deleteallController,updateallController} from '../server/supercontroller'
 import { Context } from 'hono'
 export const assetsservices= async (c:Context)=>{
