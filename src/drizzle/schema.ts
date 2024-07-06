@@ -176,6 +176,7 @@ export const navbar_table=pgTable("navbar_table",{
 export const about_leadership_table=pgTable("homodata",{
     id: serial("id").primaryKey(),
     Name:varchar("name"),
+    position:varchar("position"),
     pic:varchar("picture"),
     desc:varchar("description")
 })
