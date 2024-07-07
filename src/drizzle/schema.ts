@@ -186,6 +186,12 @@ export const about_leadership_table=pgTable("homodata",{
     desc:varchar("description")
 })
 
+export const aboutus_table=pgTable("aboutus",{
+    id: serial("id").primaryKey(),
+    type:varchar("type"),
+    desc:varchar("desc"),
+})
+
 export const faqs_table=pgTable("faqs_table",{
     id:serial("id").primaryKey(),
     question:varchar("qustions"),

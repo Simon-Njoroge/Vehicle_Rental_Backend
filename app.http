@@ -289,7 +289,23 @@ Content-Type: application/json
 ###
 DELETE http://locaLhost:8000/api/deleteassets/1
 
+//about_us_table
+###
+GET http://locaLhost:8000/api/aboutusall
 
+###
+GET http://locaLhost:8000/api/aboutus/1
+
+###
+POST  http://locaLhost:8000/api/aboutusadd
+Content-Type: application/json
+
+###
+PUT http://locaLhost:8000/api/updateaboutus/1
+Content-Type: application/json
+
+###
+DELETE http://locaLhost:8000/api/deleteaboutus/1
 
 //register
 ###
