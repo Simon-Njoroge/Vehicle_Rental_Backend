@@ -153,14 +153,16 @@ export const bokking_location_relations= relations(booking_table, ({ one, many }
 //pages data tables
 
 export const Homedata2=pgTable("alldata",{
-    id:serial("id"),
+    id:serial("id").primaryKey(),
     logo: varchar("Logo"),
     brand: varchar("brand"),
     dec: varchar("desc"),
     Hpic: varchar("Hpic"),
     phone:varchar("phone"),
+    wheelname2: varchar("wheelname2"),
     wheelpic2:varchar("2wheelpic"),
     wheelpicedesc:varchar("2wheeldesc"),
+    wheelname4: varchar("wheelname4"),
     wheelpic4:varchar("4wheelpic"),
     wheelpicedesc4:varchar("4wheeldesc")
 
