@@ -194,8 +194,9 @@ export const faqs_table=pgTable("faqs_table",{
 
 export const contact_table=pgTable("contact_table",{
     id:serial("id").primaryKey(),
-    type:varchar("type"),
-    details:varchar("details"),
+    email:varchar("email"),
+    phone:varchar("Phone"),
+    location:varchar("location")
 })
 
 export const assests_table=pgTable("assets",{
