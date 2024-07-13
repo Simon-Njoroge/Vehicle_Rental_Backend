@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.locationrouter = void 0;
+const hono_1 = require("hono");
+const loactioncontroller_1 = require("./loactioncontroller");
+exports.locationrouter = new hono_1.Hono();
+exports.locationrouter.get("/locationall", loactioncontroller_1.locationservices);
+exports.locationrouter.get("/location/:id", loactioncontroller_1.getlocations);
+exports.locationrouter.post("/locationadd", loactioncontroller_1.createlocation);
+exports.locationrouter.put("/updatelocation/:id", loactioncontroller_1.updatelocation);
+exports.locationrouter.delete("/deletenavbar/:id", loactioncontroller_1.deletelocations);

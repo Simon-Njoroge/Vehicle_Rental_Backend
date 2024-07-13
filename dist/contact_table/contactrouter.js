@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.contactrouters = void 0;
+const hono_1 = require("hono");
+const contactcontoller_1 = require("./contactcontoller");
+exports.contactrouters = new hono_1.Hono();
+exports.contactrouters.get("/contall", contactcontoller_1.contactserviceS);
+exports.contactrouters.get("/cont/:id", contactcontoller_1.getvehicle);
+exports.contactrouters.post("/contadd", contactcontoller_1.createvehicles);
+exports.contactrouters.put("/updatecont/:id", contactcontoller_1.updatevehs);
+exports.contactrouters.delete("/deletecont/:id", contactcontoller_1.deletevehicles);

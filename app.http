@@ -2,15 +2,16 @@ GET http://locaLhost:8000
 
 ###
 GET http://locaLhost:8000/api/vehicleall
+Authorization: 
 
 //vehicles
 ###
 GET http://locaLhost:8000/api/vehicle/1
-
+Authorization: 
 ###
 POST http://locaLhost:8000/api/vehicleadd
 Content-Type: application/json
-
+Authorization: 
 
 {
   "VehicleSpec_id": 3,
@@ -24,7 +25,7 @@ Content-Type: application/json
 ###
 PUT http://locaLhost:8000/api/updatevehicle/1
 Content-Type: application/json
-
+Authorization: 
 
 {
   "VehicleSpec_id": 2,
@@ -37,141 +38,171 @@ Content-Type: application/json
 //vehiclesspec
 ###
 GET http://locaLhost:8000/api/vehiclespecall
+Authorization: 
 
 ###
-GET http://locaLhost:8000/api/vehiclespec/1
+GET http://locaLhost:8000/api/vehiclespec/1002
+Authorization: 
 
 ###
 POST  http://locaLhost:8000/api/vehiclespecadd
 Content-Type: application/json
+Authorization: 
 
 ###
 PUT http://locaLhost:8000/api/updatevehiclespec/1
 Content-Type: application/json
+Authorization: 
 
 ###
 DELETE http://locaLhost:8000/api/deletevehiclespec/1
-
+Authorization: 
 
 //users
 ###
 GET http://locaLhost:8000/api/usersall
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoibXVraXJpLjE2MDMwQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMDc4NTgyMiwiZXhwIjoxNzIwODcyMjIyfQ.xPhGGtG4pIPxHCstgcPQr9-dogh96nujFBjTUFDd16Q
 ###
-GET http://locaLhost:8000/api/users/1
-
+GET http://locaLhost:8000/api/users/7
+Authorization: 
 ###
 POST  http://locaLhost:8000/api/usersadd
 Content-Type: application/json
+Authorization:
 
 ###
-PUT http://locaLhost:8000/api/updateusers/1
+PUT http://locaLhost:8000/api/updateusers/13
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoibXVraXJpc2ltb24yNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcyMDc5MjkzNSwiZXhwIjoxNzIwODc5MzM1fQ.Y1svWKnsDjV3jCYHGb5vkuq6iaEZGDsYKk_lnRHWDgg
 
+  {
+    "full_name": "SIMON NJOROGE",
+    "email": "mukirisimon24@gmail.com",
+    "contact_phone": "0717322552",
+    "address": "043 GATHANGA",
+    "role": "user",
+    "profileImage": null,
+    "created_at": null,
+    "updated_at": null
+  }
 ###
 DELETE http://locaLhost:8000/api/deleteusers/1
-
+Authorization: 
 
 //payments
 ###
 GET http://locaLhost:8000/api/paymentall
-
+Authorization: 
 ###
 GET http://locaLhost:8000/api/payment/1
-
+Authorization: 
 ###
 POST  http://locaLhost:8000/api/paymentadd
 Content-Type: application/json
-
+Authorization: 
 ###
 PUT http://locaLhost:8000/api/updatepayment/1
 Content-Type: application/json
-
+Authorization: 
 ###
 DELETE http://locaLhost:8000/api/deletepayment/1
+Authorization: 
+###
+POST  http://locaLhost:8000/api/payments
+Content-Type: application/json
+Authorization: 
 
-
+{
+  "booking_id":1,
+  "amount":"100",
+  "payment_method":"card"
+}
 
 
 //navbar
 ###
 GET http://locaLhost:8000/api/navbarall
+Authorization: 
 
 ###
 GET http://locaLhost:8000/api/navbar/1
+Authorization: 
 
 ###
 POST  http://locaLhost:8000/api/navbaradd
 Content-Type: application/json
+Authorization: 
 
 ###
 PUT http://locaLhost:8000/api/updatenavbar/1
 Content-Type: application/json
+Authorization: 
 
 ###
 DELETE http://locaLhost:8000/api/deletenavbar/1
-
+Authorization: 
 
 
 
 //location/branches
 ###
 GET http://locaLhost:8000/api/locationall
-
+Authorization: 
 ###
 GET http://locaLhost:8000/api/location/1
-
+Authorization: 
 ###
 POST  http://locaLhost:8000/api/locationadd
 Content-Type: application/json
+Authorization: 
 
 ###
 PUT http://locaLhost:8000/api/updatelocation/1
 Content-Type: application/json
-
+Authorization: 
 ###
 DELETE http://locaLhost:8000/api/deletenavbar/1
-
+Authorization: 
 
 
 //homedata
 ###
 GET http://locaLhost:8000/api/homeall
-
+Authorization: 
 ###
 GET http://locaLhost:8000/api/home/1
-
+Authorization: 
 ###
 POST  http://locaLhost:8000/api/homeadd
 Content-Type: application/json
-
+Authorization: 
 ###
 PUT http://locaLhost:8000/api/updatehome/1
 Content-Type: application/json
-
+Authorization: 
 ###
 DELETE http://locaLhost:8000/api/deletehome/1
-
+Authorization: 
 
 
 //fleet_management
 ###
 GET http://locaLhost:8000/api/fleetall
-
+Authorization: 
 ###
 GET http://locaLhost:8000/api/fleet/1
-
+Authorization: 
 ###
 POST  http://locaLhost:8000/api/fleetadd
 Content-Type: application/json
-
+Authorization: 
 ###
 PUT http://locaLhost:8000/api/updatefleet/1
 Content-Type: application/json
-
+Authorization: 
 ###
 DELETE http://locaLhost:8000/api/deletefleet/1
-
+Authorization: 
 
 
 //faqs_table
@@ -313,13 +344,13 @@ POST http://locaLhost:8000/api/auth/register
 Content-Type: application/javascript
 
 {
-  "auth_id":1,
-  "users_id":1,
-  "password":"simon",
-  "authname":"simon",
-  "createdd_at":"2024",
-  "updated_at":"2025",
-  "role":"user"
+        "full_name": "simon",
+        "email": "mukiri.16030@gmail.com",
+        "contact_phone": "+1 717322552",
+        "address": "new york",
+        "role": "admin",
+        "password":"simon",
+        "profile":"sin"
 }
 
 //login
@@ -328,8 +359,7 @@ POST  http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-   "ownername": "simon",
-   "password": "simon"
+   "email":"mukirisimon24@gmail.com",
+   "password":"simon"
 }
-
 

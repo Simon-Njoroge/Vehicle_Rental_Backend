@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fleetrouters = void 0;
+const hono_1 = require("hono");
+const fleetcontoller_1 = require("./fleetcontoller");
+exports.fleetrouters = new hono_1.Hono();
+exports.fleetrouters.get("/fleetall", fleetcontoller_1.fleetservices);
+exports.fleetrouters.get("/fleet/:id", fleetcontoller_1.getfleet);
+exports.fleetrouters.post("/fleetadd", fleetcontoller_1.createfleets);
+exports.fleetrouters.put("/updatefleet/:id", fleetcontoller_1.updatefleets);
+exports.fleetrouters.delete("/deletefleet/:id", fleetcontoller_1.deletefleets);

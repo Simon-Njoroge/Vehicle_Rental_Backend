@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.homerouters = void 0;
+const hono_1 = require("hono");
+const homecontroller_1 = require("./homecontroller");
+exports.homerouters = new hono_1.Hono();
+exports.homerouters.get("/homeall", homecontroller_1.homeservices);
+exports.homerouters.get("/home/:id", homecontroller_1.gethome);
+exports.homerouters.post("/homeadd", homecontroller_1.createhomes);
+exports.homerouters.put("/updatehome/:id", homecontroller_1.updatehomes);
+exports.homerouters.delete("/deletehome/:id", homecontroller_1.deletehomes);

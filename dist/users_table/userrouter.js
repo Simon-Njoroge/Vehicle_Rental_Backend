@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userrouter = void 0;
+const hono_1 = require("hono");
+const usercontoller_1 = require("./usercontoller");
+exports.userrouter = new hono_1.Hono();
+exports.userrouter.get("/usersall", usercontoller_1.usercervices);
+exports.userrouter.get("/users/:id", usercontoller_1.getusers);
+exports.userrouter.post("/usersadd", usercontoller_1.createusers);
+exports.userrouter.put("/updateusers/:id", usercontoller_1.updateusers);
+exports.userrouter.delete("/deleteusers/:id", usercontoller_1.deleteusers);

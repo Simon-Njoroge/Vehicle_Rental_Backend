@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.assetsrouters = void 0;
+const assetscontroller_1 = require("./assetscontroller");
+const hono_1 = require("hono");
+exports.assetsrouters = new hono_1.Hono();
+exports.assetsrouters.get("/assetsall", assetscontroller_1.assetsservices);
+exports.assetsrouters.get("/asset/:id", assetscontroller_1.getassets);
+exports.assetsrouters.post("/assetadd", assetscontroller_1.createassetss);
+exports.assetsrouters.put("/updateassets/:id", assetscontroller_1.updateassetss);
+exports.assetsrouters.delete("/deleteassets/:id", assetscontroller_1.deleteassetss);

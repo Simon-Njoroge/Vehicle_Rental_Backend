@@ -1,20 +1,16 @@
-import "dotenv/config"
-import { pgTable, varchar, serial, primaryKey, integer, decimal, pgEnum } from 'drizzle-orm/pg-core'
-import{relations} from "drizzle-orm"
-import {Many} from "drizzle-orm"
-
-//tables
+import { pgTable, varchar, serial, integer, decimal, pgEnum, timestamp} from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
 export const users_table = pgTable("users_table", {
     user_id: serial("users_id").primaryKey(),
     full_name: varchar("full_name"),
     email: varchar("email"),
     contact_phone: varchar("contact_phone"),
-    adress: varchar("address"),
+    address: varchar("address"), 
     role: varchar("role"),
+    profileImage:varchar("profile"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-
-})
+});
 
 export const payment_table = pgTable("payment_table", {
     payment_id: serial("payment_id").primaryKey(),
@@ -25,35 +21,37 @@ export const payment_table = pgTable("payment_table", {
     transaction_id: integer("transaction_id"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-})
+});
 
 export const Fleet_management_table = pgTable("Fleet_Management_table", {
     fleet_id: serial("fleet_id").primaryKey(),
     vehicles_id: integer("vehicles_id").references(() => Vehicle_specification_table.vehicle_id, { onDelete: "cascade" }),
     acquisition_date: varchar("acquisition_date"),
     description_rate: varchar("description_rate"),
-    current_value: varchar(" current_value"),
+    current_value: varchar("current_value"), // Corrected field name to "current_value"
     Maintenance_cost: decimal("Maintenance_cost"),
     status: varchar("status"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-})
+});
 
 export const Vehicle_specification_table = pgTable("Vehicle_specification_table", {
     vehicle_id: serial("vehicle_id").primaryKey(),
-    vehiclesspec_id: integer("vehiclespec_id"),
-    manufucturer: varchar("manufucturer"),
+    vehiclespec_id: integer("vehiclespec_id"),
+    manufacturer: varchar("manufacturer"), // Corrected field name to "manufacturer"
     model: varchar("model"),
     year: varchar("year"),
-    fuel_type: decimal("fuel_type"),
+    fuel_type: varchar("fuel_type"),
     status: varchar("status"),
     engine_capacity: varchar("engine_capacity"),
-    transmission: varchar("transmisssion"),
+    transmission: varchar("transmission"),
     seating_capacity: varchar("seating_capacity"),
     color: varchar("color"),
     features: varchar("features"),
-    image: varchar("image")
-})
+    image: varchar("image"),
+    rating: varchar("rating"),
+    amount: decimal("amount"),
+});
 
 export const Customer_support_Tickets_table = pgTable("Customer_support_Tickets_table", {
     ticket_id: serial("ticket_id").primaryKey(),
@@ -64,30 +62,28 @@ export const Customer_support_Tickets_table = pgTable("Customer_support_Tickets_
     status: varchar("status"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-})
-
+});
 
 export const vehicles_table = pgTable("vehicles_table", {
     VehicleSpec_id: serial("VehicleSpec_id").primaryKey(),
-    vehicles_id: integer("vehcles_id_id").references(() => Vehicle_specification_table.vehicle_id, { onDelete: "cascade" }),
+    vehicles_id: integer("vehicles_id").references(() => Vehicle_specification_table.vehicle_id, { onDelete: "cascade" }),
     rental_rate: varchar("rental_rate"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-})
+});
 
-export const booking_table = pgTable("Boking_table", {
+export const booking_table = pgTable("Booking_table", { // Corrected table name to "Booking_table"
     booking_id: serial("booking_id").primaryKey(),
     user_id: integer("user_id").references(() => users_table.user_id, { onDelete: "cascade" }),
-    vehicle_id: integer("vehicele_id").references(() => Vehicle_specification_table.vehicle_id, { onDelete: "cascade" }),
+    vehicle_id: integer("vehicle_id").references(() => Vehicle_specification_table.vehicle_id, { onDelete: "cascade" }),
     location_id: integer("location_id").references(() => Location_and_Branches_table.Location_id, { onDelete: "cascade" }),
-    book_date: varchar("bookdate"),
+    book_date: varchar("book_date"), // Corrected field name to "book_date"
     return_date: varchar("return_date"),
     total_amount: decimal("total_amount"),
     booking_status: varchar("booking_status"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-})
-
+});
 
 export const Location_and_Branches_table = pgTable("Location_and_Branches_table", {
     Location_id: serial("location_id").primaryKey(),
@@ -96,136 +92,138 @@ export const Location_and_Branches_table = pgTable("Location_and_Branches_table"
     contact_phone: varchar("contact_phone"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-})
+});
 
-//relationships
-
+// Relationships
 export const usersRelations = relations(users_table, ({ one }) => ({
     orderStatus: one(Customer_support_Tickets_table, {
         fields: [users_table.user_id],
-        references: [Customer_support_Tickets_table.user_id]
-    })
-}))
+        references: [Customer_support_Tickets_table.user_id],
+    }),
+}));
+
 export const Customer_user_Relations = relations(Customer_support_Tickets_table, ({ one, many }) => ({
-    orders: many(users_table)
-}))
+    orders: many(users_table),
+}));
 
 export const usersRelations2 = relations(users_table, ({ one }) => ({
     orderStatus: one(booking_table, {
         fields: [users_table.user_id],
-        references: [booking_table.user_id]
-    })
-}))
-export const bookin_user_realations = relations(booking_table, ({ one, many }) => ({
-    orders: many(users_table)
-}))
+        references: [booking_table.user_id],
+    }),
+}));
+
+export const bookin_user_relations = relations(booking_table, ({ one, many }) => ({
+    orders: many(users_table),
+}));
 
 export const vehiclespecificationrelations = relations(Vehicle_specification_table, ({ one }) => ({
     orderStatus: one(Fleet_management_table, {
         fields: [Vehicle_specification_table.vehicle_id],
-        references: [Fleet_management_table.vehicles_id]
-    })
-}))
-export const fleet_vehicle_relations = relations(Fleet_management_table, ({ one, many }) => ({
-    orders: many(Vehicle_specification_table)
-}))
+        references: [Fleet_management_table.vehicles_id],
+    }),
+}));
 
-export const vehiclespecificationrelations2= relations(Vehicle_specification_table,({ one }) => ({
+export const fleet_vehicle_relations = relations(Fleet_management_table, ({ one, many }) => ({
+    orders: many(Vehicle_specification_table),
+}));
+
+export const vehiclespecificationrelations2 = relations(Vehicle_specification_table, ({ one }) => ({
     orderStatus: one(booking_table, {
         fields: [Vehicle_specification_table.vehicle_id],
-        references: [booking_table.vehicle_id]
-    })
-}))
-export const booking_vehicle_relations= relations(booking_table, ({ one, many }) => ({
-    orders: many(Vehicle_specification_table)
-}))
+        references: [booking_table.vehicle_id],
+    }),
+}));
 
-export const locationrelations= relations(Location_and_Branches_table,({ one }) => ({
+export const booking_vehicle_relations = relations(booking_table, ({ one, many }) => ({
+    orders: many(Vehicle_specification_table),
+}));
+
+export const locationrelations = relations(Location_and_Branches_table, ({ one }) => ({
     orderStatus: one(booking_table, {
         fields: [Location_and_Branches_table.Location_id],
-        references: [booking_table.location_id]
-    })
-}))
-export const bokking_location_relations= relations(booking_table, ({ one, many }) => ({
-    orders: many(Location_and_Branches_table)
-}))
+        references: [booking_table.location_id],
+    }),
+}));
 
-//pages data tables
+export const booking_location_relations = relations(booking_table, ({ one, many }) => ({
+    orders: many(Location_and_Branches_table),
+}));
 
-export const Homedata2=pgTable("alldata",{
-    id:serial("id").primaryKey(),
+// Pages data tables
+
+export const Homedata2 = pgTable("alldata", {
+    id: serial("id").primaryKey(),
     logo: varchar("Logo"),
     brand: varchar("brand"),
     dec: varchar("desc"),
     Hpic: varchar("Hpic"),
-    phone:varchar("phone"),
+    phone: varchar("phone"),
     wheelname2: varchar("wheelname2"),
-    wheelpic2:varchar("2wheelpic"),
-    wheelpicedesc:varchar("2wheeldesc"),
+    wheelpic2: varchar("2wheelpic"),
+    wheelpicedesc: varchar("2wheeldesc"),
     wheelname4: varchar("wheelname4"),
-    wheelpic4:varchar("4wheelpic"),
-    wheelpicedesc4:varchar("4wheeldesc")
+    wheelpic4: varchar("4wheelpic"),
+    wheelpicedesc4: varchar("4wheeldesc"),
+});
 
-   
-})
-
-export const navbar_table=pgTable("navbar_table",{
-    id:serial("id").primaryKey(),
-    Home:varchar("Home"),
-    About:varchar("About"),
-    faqs:varchar("faqs"),
-    contats:varchar("contacts"),
-    regester:varchar("regester"),
-    signin:varchar("signin")
-})
-export const about_leadership_table=pgTable("homodata",{
+export const navbar_table = pgTable("navbar_table", {
     id: serial("id").primaryKey(),
-    Name:varchar("name"),
-    position:varchar("position"),
-    pic:varchar("picture"),
-    desc:varchar("description")
-})
+    Home: varchar("Home"),
+    About: varchar("About"),
+    faqs: varchar("faqs"),
+    contacts: varchar("contacts"), // Corrected field name to "contacts"
+    register: varchar("register"), // Corrected field name to "register"
+    signin: varchar("signin"),
+});
 
-export const aboutus_table=pgTable("aboutus",{
+export const about_leadership_table = pgTable("homodata", {
     id: serial("id").primaryKey(),
-    type:varchar("type"),
-    desc:varchar("desc"),
-})
+    Name: varchar("name"),
+    position: varchar("position"),
+    pic: varchar("picture"),
+    desc: varchar("description"),
+});
 
-export const faqs_table=pgTable("faqs_table",{
-    id:serial("id").primaryKey(),
-    question:varchar("qustions"),
-    answers:varchar("answers"),
-})
+export const aboutus_table = pgTable("aboutus", {
+    id: serial("id").primaryKey(),
+    type: varchar("type"),
+    desc: varchar("desc"),
+});
 
-export const contact_table=pgTable("contact_table",{
-    id:serial("id").primaryKey(),
-    email:varchar("email"),
-    phone:varchar("Phone"),
-    location:varchar("location")
-})
+export const faqs_table = pgTable("faqs_table", {
+    id: serial("id").primaryKey(),
+    question: varchar("question"), // Corrected field name to "question"
+    answers: varchar("answers"),
+});
 
-export const assests_table=pgTable("assets",{
-    assets_id:serial("assets_id").primaryKey(),
-    name:varchar("name"),
-    Item:varchar("item")
-})
-//authenticationtable
-export const RoleEnum=pgEnum("role",["admin","user"])
-export const VehicleRentalauth=pgTable("auths",{
-    auth_id:serial("auth_id").primaryKey(),
-    users_id: integer("users_id").references(()=>users_table.user_id,{onDelete:"cascade"}),
-    password:varchar("password"),
-    authname:varchar("authname"),
+export const contact_table = pgTable("contact_table", {
+    id: serial("id").primaryKey(),
+    email: varchar("email"),
+    phone: varchar("phone"),
+    location: varchar("location"),
+});
+
+export const assets_table = pgTable("assets", {
+    assets_id: serial("assets_id").primaryKey(),
+    name: varchar("name"),
+    item: varchar("item"), // Corrected field name to "item"
+});
+
+// Authentication table
+export const RoleEnum = pgEnum("role", ["admin", "user"]);
+export const VehicleRentalauth = pgTable("auths", {
+    auth_id: serial("auth_id").primaryKey(),
+    users_id: integer("users_id").references(() => users_table.user_id, { onDelete: "cascade" }),
+    password: varchar("password"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
-    role:RoleEnum("role").default("user")
-})
+});
 
-export const authrelation= relations(users_table,({one})=>({
-    owner:one(VehicleRentalauth,{
-        fields:[users_table.user_id],
-        references:[VehicleRentalauth.users_id]
+export const authrelation= relations(VehicleRentalauth,({one})=>({
+    user:one(users_table,{
+        fields:[VehicleRentalauth.users_id],
+        references:[users_table.user_id]
     })
 }))
 

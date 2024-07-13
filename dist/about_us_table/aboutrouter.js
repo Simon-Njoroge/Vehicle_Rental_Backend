@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.aboutusrouter = void 0;
+const aboutcontoller_1 = require("./aboutcontoller");
+const hono_1 = require("hono");
+exports.aboutusrouter = new hono_1.Hono();
+exports.aboutusrouter.get("/aboutusall", aboutcontoller_1.aboutusservices);
+exports.aboutusrouter.get("/aboutus/:id", aboutcontoller_1.getaboutuss);
+exports.aboutusrouter.post("/aboutusadd", aboutcontoller_1.createaboutuss);
+exports.aboutusrouter.put("/updateaboutus/:id", aboutcontoller_1.updateaboutuss);
+exports.aboutusrouter.delete("/deleteaboutus/:id", aboutcontoller_1.deleteaboutuss);

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.paymentrouter = void 0;
+const hono_1 = require("hono");
+const paymentcontroller_1 = require("./paymentcontroller");
+exports.paymentrouter = new hono_1.Hono();
+exports.paymentrouter.get("/paymentall", paymentcontroller_1.paymentservices);
+exports.paymentrouter.get("/payment/:id", paymentcontroller_1.getpayment);
+exports.paymentrouter.post("/paymentadd", paymentcontroller_1.createpayments);
+exports.paymentrouter.put("/updatepayment/:id", paymentcontroller_1.updatepayments);
+exports.paymentrouter.delete("/deletepayment/:id", paymentcontroller_1.deletepayments);
