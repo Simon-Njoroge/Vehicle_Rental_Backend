@@ -4,7 +4,7 @@ import {and, or, sql} from "drizzle-orm"
 import { eq } from "drizzle-orm" 
 import bcrypt from 'bcrypt'
 import { TUsers , TAuth,Tlogin} from '../validatot'
-import { Await } from 'react-router-dom'
+
 const secret = process.env.JWT_SECRET;
 const expiresIn = process.env.JWT_EXPIRES_IN;
 const jwt = require('jsonwebtoken');
