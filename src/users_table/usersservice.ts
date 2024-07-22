@@ -1,7 +1,6 @@
 import { eq, getOrderByOperators } from "drizzle-orm"
 import { db } from '../drizzle/db'
 import { users_table, TIuser, Tsuser } from "../drizzle/schema"
-
 export const usersservice = async (limit?: number) => {
    if (limit) {
       return await db.query.users_table.findMany({
@@ -9,9 +8,9 @@ export const usersservice = async (limit?: number) => {
       });
    }
    return await db.query.users_table.findMany({
-      columns: {
-         user_id: false,
-      }
+      // columns: {
+      //    user_id: false,
+      // }
    })
 }
 export const getusersservice = async (id: number) => {

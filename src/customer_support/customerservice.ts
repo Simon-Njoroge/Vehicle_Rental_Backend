@@ -11,8 +11,8 @@ export const customerservice = async (limit?: number)=>{
      return await db.query.Customer_support_Tickets_table.findMany()
 }
 export const getcustomerservice =async(id: number)=>{
-    return await db.query.Customer_support_Tickets_table.findFirst({
-        where: eq(Customer_support_Tickets_table.ticket_id,id),
+    return await db.query.Customer_support_Tickets_table.findMany({
+        where: eq(Customer_support_Tickets_table.user_id,id),
         
     })
  }
@@ -22,7 +22,7 @@ export const getcustomerservice =async(id: number)=>{
     return "ordermenu created successfiully"
  }
 
- export const updatecustomer = async<T>(id:number ,tic:TICuss):Promise<any>=>{
+ export const updatecustomer = async<T>(id:number ,tic:any):Promise<any>=>{
     await db.update(Customer_support_Tickets_table).set(tic).where(eq(Customer_support_Tickets_table.ticket_id,id))
     return "updated successfully"
  }

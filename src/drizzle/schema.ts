@@ -1,5 +1,7 @@
-import { pgTable, varchar, serial, integer, decimal, pgEnum, timestamp} from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm';
+import { pgTable, varchar, serial, integer, decimal, pgEnum, timestamp, boolean} from 'drizzle-orm/pg-core';
+import { relations, sql } from 'drizzle-orm';
+import { Vehiclerouter } from '../vehicles/vehiclesrouter';
+
 export const users_table = pgTable("users_table", {
     user_id: serial("users_id").primaryKey(),
     full_name: varchar("full_name"),
@@ -7,6 +9,7 @@ export const users_table = pgTable("users_table", {
     contact_phone: varchar("contact_phone"),
     address: varchar("address"), 
     role: varchar("role"),
+    status:varchar("status"),
     profileImage:varchar("profile"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
@@ -37,7 +40,6 @@ export const Fleet_management_table = pgTable("Fleet_Management_table", {
 
 export const Vehicle_specification_table = pgTable("Vehicle_specification_table", {
     vehicle_id: serial("vehicle_id").primaryKey(),
-    vehiclespec_id: integer("vehiclespec_id"),
     manufacturer: varchar("manufacturer"), // Corrected field name to "manufacturer"
     model: varchar("model"),
     year: varchar("year"),
@@ -59,7 +61,7 @@ export const Customer_support_Tickets_table = pgTable("Customer_support_Tickets_
     subject: varchar("subject"),
     model: varchar("model"),
     description: varchar("description"),
-    status: varchar("status"),
+    status: varchar("status").default("pending"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
 });
@@ -68,6 +70,9 @@ export const vehicles_table = pgTable("vehicles_table", {
     VehicleSpec_id: serial("VehicleSpec_id").primaryKey(),
     vehicles_id: integer("vehicles_id").references(() => Vehicle_specification_table.vehicle_id, { onDelete: "cascade" }),
     rental_rate: varchar("rental_rate"),
+    availabillity:boolean("availabillity"),
+    image:varchar("image"),
+    amount:decimal("amount"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
 });
@@ -80,7 +85,7 @@ export const booking_table = pgTable("Booking_table", { // Corrected table name 
     book_date: varchar("book_date"), // Corrected field name to "book_date"
     return_date: varchar("return_date"),
     total_amount: decimal("total_amount"),
-    booking_status: varchar("booking_status"),
+    booking_status: varchar("booking_status").default("pending"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
 });
@@ -122,6 +127,14 @@ export const vehiclespecificationrelations = relations(Vehicle_specification_tab
         fields: [Vehicle_specification_table.vehicle_id],
         references: [Fleet_management_table.vehicles_id],
     }),
+}));
+export const vehicleRelations = relations(vehicles_table, ({ one }) => ({
+    vehicleSpec: one(Vehicle_specification_table, {
+        fields: [vehicles_table.vehicles_id],
+        references: [Vehicle_specification_table.vehicle_id]
+    })}))
+export const vehiclesrelation2 = relations( Vehicle_specification_table, ({ one, many }) => ({
+    orders: many(vehicles_table),
 }));
 
 export const fleet_vehicle_relations = relations(Fleet_management_table, ({ one, many }) => ({
@@ -216,6 +229,7 @@ export const VehicleRentalauth = pgTable("auths", {
     auth_id: serial("auth_id").primaryKey(),
     users_id: integer("users_id").references(() => users_table.user_id, { onDelete: "cascade" }),
     password: varchar("password"),
+    status:varchar("status"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
 });

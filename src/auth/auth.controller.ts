@@ -1,5 +1,6 @@
 import { Context } from "hono";
 import {registerUser,authLoginService} from './auth.service'
+import { getallController, createallController, deleteallController, updateallController } from '../server/supercontroller'
 import bcrypt from 'bcrypt'
 import "dotenv/config" 
 import{sign} from "hono/jwt"

@@ -1,7 +1,8 @@
-import { eq, getOrderByOperators } from "drizzle-orm"
+import { eq, getOrderByOperators ,and} from "drizzle-orm"
 import { db } from '../drizzle/db'
-import { booking_table, TIBsta, TSBsta } from "../drizzle/schema"
-
+import { booking_table, TIBsta, TSBsta,Vehicle_specification_table} from "../drizzle/schema"
+const status="pending"
+const booked="booked"
 export const bookingservice = async (limit?: number) => {
    if (limit) {
       return await db.query.booking_table.findMany({
@@ -11,8 +12,14 @@ export const bookingservice = async (limit?: number) => {
    return await db.query.booking_table.findMany()
 }
 export const getbookservice = async (id: number) => {
-   return await db.query.booking_table.findFirst({
-      where: eq(booking_table.booking_id, id),
+   return await db.query.booking_table.findMany({
+      where: and( eq(booking_table.user_id, id), eq(booking_table.booking_status,status) ),
+
+   })
+}
+export const getbooked = async (id: number) => {
+   return await db.query.booking_table.findMany({
+      where: and( eq(booking_table.user_id, id), eq(booking_table.booking_status,booked) ),
 
    })
 }
@@ -22,7 +29,7 @@ export const creatbooking = async<T>(bok: TIBsta): Promise<any> => {
    return "ordermenu created successfiully"
 }
 
-export const updatebooking = async<T>(id: number, book: TIBsta): Promise<any> => {
+export const updatebooking = async<T>(id: number, book: any): Promise<any> => {
    await db.update(booking_table).set(book).where(eq(booking_table.booking_id, id))
    return "updated successfully"
 }

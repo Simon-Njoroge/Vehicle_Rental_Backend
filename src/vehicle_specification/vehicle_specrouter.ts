@@ -5,7 +5,7 @@ import { zValidator } from "@hono/zod-validator"
 import { Tvehspec } from "../validatot"
 export const Vehiclespecrouter = new Hono();
 Vehiclespecrouter.get("/vehiclespecall", vehiclespecervices)
-Vehiclespecrouter.get("/vehiclespec/:id", bothauth, getvehiclespec)
+Vehiclespecrouter.get("/vehiclespec/:id", getvehiclespec)
 Vehiclespecrouter.post("/vehiclespecadd", adminAuth, zValidator("json", Tvehspec, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)

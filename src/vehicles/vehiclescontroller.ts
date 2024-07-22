@@ -1,6 +1,7 @@
-import { vehicleservice, getvehicleservice, createvehicle, updateveh, deleteveh } from "./vehiclesservice"
+import { vehicleservice, getvehicleservice, createVehicleWithSpecification, updateveh, deleteveh } from "./vehiclesservice"
 import { getallController, createallController, deleteallController, updateallController } from '../server/supercontroller'
 import { Context } from "hono"
+import { vehicles_table } from "../drizzle/schema"
 export const vehicleservices = async (c: Context) => {
     try {
         const books = await vehicleservice()
@@ -14,6 +15,25 @@ export const vehicleservices = async (c: Context) => {
     }
 }
 export const getvehicle = getallController(getvehicleservice)
-export const createvehicles = createallController(createvehicle)
+export const createVehicleWithSpecController = async (c: Context) => {
+    try {
+      const requestBody = await c.req.json();
+      const Vehiclespec = requestBody.Vehiclespec;
+      const vehicle = requestBody.vehicle;
+ 
+      if (!Vehiclespec || !vehicle) {
+        throw new Error('vehicleSpec and vehicle are required.');
+      }
+ 
+      console.log('Received vehicleSpec:', Vehiclespec);
+      console.log('Received vehicle:', vehicle);
+ 
+      const result = await createVehicleWithSpecification(Vehiclespec, vehicle);
+      return c.json(result, 201);
+    } catch (error: any) {
+      console.error('Error in createVehicleWithSpecController:', error);
+      return c.json({ error: error.message }, 500);
+    }
+  };
 export const updatevehs = updateallController(getvehicleservice, updateveh)
 export const deletevehicles = deleteallController(getvehicleservice, deleteveh)

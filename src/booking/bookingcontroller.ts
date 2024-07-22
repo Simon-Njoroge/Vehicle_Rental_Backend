@@ -1,4 +1,4 @@
-import { bookingservice, getbookservice, creatbooking, updatebooking, deletebooking } from './bookingsservice'
+import { bookingservice, getbookservice,getbooked, creatbooking, updatebooking, deletebooking } from './bookingsservice'
 import { getallController, createallController, deleteallController, updateallController } from '../server/supercontroller'
 import { Context } from 'hono'
 export const bookingservices = async (c: Context) => {
@@ -14,6 +14,7 @@ export const bookingservices = async (c: Context) => {
     }
 }
 export const getbooking = getallController(getbookservice)
+export const getbookeds = getallController(getbooked)
 export const createbook = createallController(creatbooking)
 export const updatebook = updateallController(getbookservice, updatebooking)
 export const deletebook = deleteallController(getbookservice, deletebooking)

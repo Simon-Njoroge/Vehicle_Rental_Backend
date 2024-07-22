@@ -9,9 +9,9 @@ export const locationservice = async (limit?: number) => {
       });
    }
    return await db.query.Location_and_Branches_table.findMany({
-      columns: {
-         Location_id: false
-      }
+      // columns: {
+      //    Location_id: false
+      // }
    })
 }
 export const getlocationservice = async (id: number) => {

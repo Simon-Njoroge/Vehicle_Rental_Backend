@@ -1,8 +1,7 @@
 import { Column, eq, getOrderByOperators } from "drizzle-orm"
 import { db } from '../drizzle/db'
-import { Vehicle_specification_table, TIVspec, TSVspec } from "../drizzle/schema"
+import { Vehicle_specification_table, TIVspec, TSVspec,vehicles_table } from "../drizzle/schema"
 
-const stat: string = "Available"
 export const vehiclespecservice = async (limit?: number) => {
    if (limit) {
       return await db.query.Vehicle_specification_table.findMany({
@@ -10,19 +9,12 @@ export const vehiclespecservice = async (limit?: number) => {
       });
    }
    return await db.query.Vehicle_specification_table.findMany({
-      where: eq(
-         Vehicle_specification_table.status, stat
-      ),
-   }
-   )
+   })
 }
 export const getvehiclespecservice = async (id: number) => {
    return await db.query.Vehicle_specification_table.findFirst({
-      where: eq(Vehicle_specification_table.vehiclespec_id, id),
-      columns: {
-         vehicle_id: false,
-         vehiclespec_id: false,
-      }
+      where: eq(Vehicle_specification_table.vehicle_id, id),
+     
    })
 }
 
@@ -32,7 +24,7 @@ export const createspecvehicle = async<T>(Vehs: TIVspec): Promise<any> => {
 }
 
 export const updatespecveh = async<T>(id: number, vehs: TIVspec): Promise<any> => {
-   await db.update(Vehicle_specification_table).set(vehs).where(eq(Vehicle_specification_table.vehiclespec_id, id))
+   await db.update(Vehicle_specification_table).set(vehs).where(eq(Vehicle_specification_table.vehicle_id, id))
    return "updated successfully"
 }
 

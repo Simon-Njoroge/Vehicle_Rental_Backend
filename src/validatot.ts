@@ -45,8 +45,6 @@ export const Tfleet=z.object({
 })
 
 export const  Tvehspec=z.object({
-   vehicle_id:z.number(),
-   vehiclespec_id: z.number(),
    manufacturer:z.string(), 
    model: z.string(),
    year: z.string(),
@@ -74,24 +72,23 @@ export const Tcustomer=z.object({
 })
 
 export const Tveh=z.object({
-   VehicleSpec_id: z.number(),
-   vehicles_id: z.number(),
-   rental_rate: z.string(),
-   created_at: z.string(),
-   updated_at: z.string(),
+   rental_rate: z.string().optional(),
+   availabillity:z.boolean().optional(),
+   image:z.string().optional(),
+   amount:z.number().optional()
 })
 
 export const Tbtable=z.object({
-   booking_id: z.number(),
-   user_id: z.number(),
-   vehicle_id: z.number(),
-   location_id: z.number(),
-   book_date: z.string(),
-   return_date: z.string(),
-   total_amount: z.number(),
-   booking_status: z.string(),
-   created_at: z.string(),
-   updated_at: z.string(),
+   booking_id: z.number().optional(),
+   user_id: z.number().optional(),
+   vehicle_id: z.number().optional(),
+   location_id: z.number().optional(),
+   book_date: z.string().optional(),
+   return_date: z.string().optional(),
+   total_amount: z.number().optional(),
+   booking_status: z.string().optional(),
+   created_at: z.string().optional(),
+   updated_at: z.string().optional(),
 })
 
 export const TLoc=z.object({

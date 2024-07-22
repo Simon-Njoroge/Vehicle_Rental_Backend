@@ -24,7 +24,6 @@ export const authmiddleware = async (c:Context,next:Next, requiredRole: string)=
     
             return next();    
 }
-
-export const bothauth = async (c:Context,next:Next)=> await authmiddleware(c,next,"[admin,user]")  
+export const bothauth = async (c:Context,next:Next)=> await authmiddleware(c,next,"user") 
 export const adminAuth = async (c:Context,next:Next)=> await authmiddleware(c,next,"admin")  
 export const userAuth = async (c:Context,next:Next)=> await authmiddleware(c,next,"user")

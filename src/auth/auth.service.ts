@@ -1,12 +1,14 @@
 import{VehicleRentalauth,users_table,TSAuth,TIAuth} from '../drizzle/schema'
 import {db} from '../drizzle/db'
-import {sql} from "drizzle-orm"
+import {and, or, sql} from "drizzle-orm"
 import { eq } from "drizzle-orm" 
 import bcrypt from 'bcrypt'
 import { TUsers , TAuth,Tlogin} from '../validatot'
+import { Await } from 'react-router-dom'
 const secret = process.env.JWT_SECRET;
 const expiresIn = process.env.JWT_EXPIRES_IN;
 const jwt = require('jsonwebtoken');
+const status:any="active"
 export const registerUser = async (user: any) => {
     TUsers.parse(user);
     TAuth.parse(user);
@@ -56,7 +58,12 @@ export const registerUser = async (user: any) => {
 export const authLoginService = async (email: string, password: string) => {
     try {
 
-        const users = await db.select().from(users_table).where(eq(users_table.email, email)).execute();
+        const users = await db.select().from(users_table).where(
+            and(
+              eq(users_table.email, email),
+              eq(users_table.status,status)
+            )
+          ).execute();
 
         if (users.length === 0) {
             throw new Error('User not found! Try Again');
@@ -92,3 +99,7 @@ export const authLoginService = async (email: string, password: string) => {
         throw error;  
     }
 };
+export const updatepassword = async<T>(id: number, auth: any): Promise<any> => {
+    await db.update(VehicleRentalauth).set(auth).where(eq(VehicleRentalauth.users_id, id))
+    return "updated successfully"
+ }

@@ -1,10 +1,10 @@
 import { Hono } from "hono"
 import { locationservices, getlocations, createlocation, updatelocation, deletelocations } from './loactioncontroller'
-import { adminAuth, bothauth } from '../middleware/bearAuth'
+import { adminAuth, bothauth,userAuth } from '../middleware/bearAuth'
 import { zValidator } from "@hono/zod-validator"
 import { TLoc } from "../validatot"
 export const locationrouter = new Hono();
-locationrouter.get("/locationall", adminAuth, locationservices)
+locationrouter.get("/locationall", locationservices)
 locationrouter.get("/location/:id", bothauth, getlocations)
 locationrouter.post("/locationadd", zValidator("json", TLoc, (result, c) => {
     if (!result.success) {
