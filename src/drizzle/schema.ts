@@ -77,12 +77,12 @@ export const vehicles_table = pgTable("vehicles_table", {
     updated_at: varchar("updated_at"),
 });
 
-export const booking_table = pgTable("Booking_table", { // Corrected table name to "Booking_table"
+export const booking_table = pgTable("Booking_table", { 
     booking_id: serial("booking_id").primaryKey(),
     user_id: integer("user_id").references(() => users_table.user_id, { onDelete: "cascade" }),
     vehicle_id: integer("vehicle_id").references(() => Vehicle_specification_table.vehicle_id, { onDelete: "cascade" }),
     location_id: integer("location_id").references(() => Location_and_Branches_table.Location_id, { onDelete: "cascade" }),
-    book_date: varchar("book_date"), // Corrected field name to "book_date"
+    book_date: varchar("book_date"), 
     return_date: varchar("return_date"),
     total_amount: decimal("total_amount"),
     booking_status: varchar("booking_status").default("pending"),
@@ -185,8 +185,8 @@ export const navbar_table = pgTable("navbar_table", {
     Home: varchar("Home"),
     About: varchar("About"),
     faqs: varchar("faqs"),
-    contacts: varchar("contacts"), // Corrected field name to "contacts"
-    register: varchar("register"), // Corrected field name to "register"
+    contacts: varchar("contacts"), 
+    register: varchar("register"),
     signin: varchar("signin"),
 });
 
@@ -206,7 +206,7 @@ export const aboutus_table = pgTable("aboutus", {
 
 export const faqs_table = pgTable("faqs_table", {
     id: serial("id").primaryKey(),
-    question: varchar("question"), // Corrected field name to "question"
+    question: varchar("question"), 
     answers: varchar("answers"),
 });
 
@@ -220,7 +220,7 @@ export const contact_table = pgTable("contact_table", {
 export const assets_table = pgTable("assets", {
     assets_id: serial("assets_id").primaryKey(),
     name: varchar("name"),
-    item: varchar("item"), // Corrected field name to "item"
+    item: varchar("item"), 
 });
 
 // Authentication table

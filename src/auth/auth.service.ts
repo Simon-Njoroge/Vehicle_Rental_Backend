@@ -55,7 +55,7 @@ export const registerUser = async (user: any) => {
 }
         
 
-export const authLoginService = async (email: string, password: string) => {
+export const authLoginService = async (email: string, password:string) => {
     try {
 
         const users = await db.select().from(users_table).where(
@@ -78,7 +78,7 @@ export const authLoginService = async (email: string, password: string) => {
             throw new Error('Invalid credentials! Try again');
         }
 
-        const auth = auths[0];
+        const auth:any = auths[0];
 
 
         const isPasswordValid = await bcrypt.compare(password, auth.password);
