@@ -1,4 +1,4 @@
-import { paymentservice, getpaymentservice, createpayment, updatepayment, deletepayment, createPaymentService } from './paymentservice'
+import { paymentservice, getpaymentservice, createpayment, updatepayment, deletepayment } from './paymentservice'
 import { getallController, createallController, deleteallController, updateallController } from '../server/supercontroller'
 import { Context } from "hono"
 export const paymentservices = async (c: Context) => {
