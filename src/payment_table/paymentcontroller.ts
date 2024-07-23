@@ -17,12 +17,12 @@ export const getpayment = getallController(getpaymentservice)
 export const createpayments = createallController(createpayment)
 export const updatepayments = updateallController(getpaymentservice, updatepayment)
 export const deletepayments = deleteallController(getpaymentservice, deletepayment)
-export const Makepaymnets = async (c:Context) =>{
-    try {
-        const pay = await c.req.json();
-        const result = await createPaymentService(pay);
-        return c.json(result, 201);
-    } catch (error: any) {
-        return c.json({error: error.message}, 400);
-    }
-}
+// export const Makepaymnets = async (c:Context) =>{
+//     try {
+//         const pay = await c.req.json();
+//         const result = await createPaymentService(pay);
+//         return c.json(result, 201);
+//     } catch (error: any) {
+//         return c.json({error: error.message}, 400);
+//     }
+// }
