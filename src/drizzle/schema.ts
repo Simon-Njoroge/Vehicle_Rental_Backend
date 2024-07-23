@@ -22,8 +22,7 @@ export const payment_table = pgTable("payment_table", {
     payment_status: varchar("payment_status"),
     payment_method: varchar("payment_method"),
     transaction_id: varchar("transaction_id"),
-    created_at: varchar("created_at"),
-    updated_at: varchar("updated_at"),
+ 
 });
 
 export const Fleet_management_table = pgTable("Fleet_Management_table", {
