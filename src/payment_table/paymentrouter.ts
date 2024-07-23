@@ -1,5 +1,5 @@
 import { Hono } from "hono"
-import { paymentservices, getpayment, createpayments, updatepayments, deletepayments, Makepaymnets } from './paymentcontroller'
+import { paymentservices, getpayment, createpayments, updatepayments, deletepayments } from './paymentcontroller'
 import { adminAuth } from '../middleware/bearAuth'
 import { zValidator } from "@hono/zod-validator"
 import { Tpayment } from "../validatot"
@@ -13,4 +13,4 @@ paymentrouter.post("/paymentadd", zValidator("json", Tpayment, (result, c) => {
 }), createpayments)
 paymentrouter.put("/updatepayment/:id", updatepayments)
 paymentrouter.delete("/deletepayment/:id", deletepayments)
-paymentrouter.post("/payments", Makepaymnets)
+// paymentrouter.post("/payments", Makepaymnets)
