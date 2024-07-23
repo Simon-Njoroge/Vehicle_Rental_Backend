@@ -6,10 +6,6 @@ import { TUsers } from "../validatot"
 export const userrouter = new Hono();
 userrouter.get("/usersall", usercervices)
 userrouter.get("/users/:id", bothauth, getusers)
-userrouter.post("/usersadd", zValidator("json", TUsers, (result, c) => {
-    if (!result.success) {
-        return c.json(result.error, 400)
-    }
-}), createusers)
+userrouter.post("/usersadd",createusers)
 userrouter.put("/updateusers/:id", updateusers)
-userrouter.delete("/deleteusers/:id", bothauth, deleteusers)
+userrouter.delete("/deleteusers/:id", deleteusers)

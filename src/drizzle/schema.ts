@@ -8,9 +8,9 @@ export const users_table = pgTable("users_table", {
     email: varchar("email"),
     contact_phone: varchar("contact_phone"),
     address: varchar("address"), 
-    role: varchar("role"),
-    status:varchar("status"),
-    profileImage:varchar("profile"),
+    role: varchar("role").default("user"),
+    status:varchar("status").default("active"),
+    profileImage:varchar("profile").default("https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?t=st=1721722486~exp=1721726086~hmac=52b85a6b86cb65e4356f18932133566c3ebe8f561404698f97e0bdfefd7059d1&w=740"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
 });

@@ -99,7 +99,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoibXVr
     "status": "active"
   }
 ###
-DELETE http://locaLhost:8000/api/deleteusers/1
+DELETE http://locaLhost:8000/api/deleteusers/28
 Authorization: 
 
 //payments
@@ -385,7 +385,7 @@ Content-Type: application/javascript
 
 {
         "full_name": "simon",
-        "email": "mukirisimon30@gmail.com",
+        "email": "mukirisimon35@gmail.com",
         "contact_phone": "+1 717322552",
         "address": "new york",
         "role": "admin",
