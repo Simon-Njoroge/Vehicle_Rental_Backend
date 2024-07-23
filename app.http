@@ -325,6 +325,9 @@ DELETE http://locaLhost:8000/api/deletebook/1
 GET http://locaLhost:8000/api/aboutall
 
 ###
+GET http://locaLhost:8000/api/aboutleaders
+
+###
 GET http://locaLhost:8000/api/about/1
 
 ###
