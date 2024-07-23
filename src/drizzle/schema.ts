@@ -21,7 +21,7 @@ export const payment_table = pgTable("payment_table", {
     amount: integer("amount"),
     payment_status: varchar("payment_status"),
     payment_method: varchar("payment_method"),
-    transaction_id: integer("transaction_id"),
+    transaction_id: varchar("transaction_id"),
     created_at: varchar("created_at"),
     updated_at: varchar("updated_at"),
 });

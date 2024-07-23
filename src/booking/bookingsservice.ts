@@ -2,7 +2,7 @@ import { eq, getOrderByOperators ,and} from "drizzle-orm"
 import { db } from '../drizzle/db'
 import { booking_table, TIBsta, TSBsta,Vehicle_specification_table} from "../drizzle/schema"
 const status="pending"
-const booked="booked"
+const booked="confirmed"
 export const bookingservice = async (limit?: number) => {
    if (limit) {
       return await db.query.booking_table.findMany({

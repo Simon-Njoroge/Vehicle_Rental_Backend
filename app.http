@@ -56,8 +56,13 @@ DELETE http://locaLhost:8000/api/deletevehicle/1
 Authorization:
 
 //vehiclesspec
+
 ###
 GET http://locaLhost:8000/api/vehiclespecall
+Authorization 
+
+###
+GET http://locaLhost:8000/api/test-checkout
 Authorization: 
 
 ###
@@ -65,9 +70,13 @@ GET http://locaLhost:8000/api/vehiclespec/35
 Authorization: 
 
 ###
-POST  http://locaLhost:8000/api/vehiclespecadd
+POST  http://locaLhost:8000/api/create-checkout
 Content-Type: application/json
-Authorization: 
+
+{
+  "booking_id":29,
+  "amount": 290
+}
 
 ###
 PUT http://locaLhost:8000/api/updatevehiclespec/1
@@ -113,6 +122,16 @@ Authorization:
 POST  http://locaLhost:8000/api/paymentadd
 Content-Type: application/json
 Authorization: 
+
+###
+POST  http://locaLhost:8000/api/pay
+Content-Type: application/json
+
+{
+  "booking_id":1,
+  "amount":200
+}
+
 ###
 PUT http://locaLhost:8000/api/updatepayment/1
 Content-Type: application/json
