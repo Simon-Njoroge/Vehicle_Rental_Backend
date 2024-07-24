@@ -74,7 +74,7 @@ POST  http://locaLhost:8000/api/create-checkout
 Content-Type: application/json
 
 {
-  "booking_id":29,
+  "booking_id":34,
   "amount": 290
 }
 
@@ -128,7 +128,7 @@ POST  http://locaLhost:8000/api/pay
 Content-Type: application/json
 
 {
-  "booking_id":1,
+  "booking_id":31,
   "amount":200
 }
 
